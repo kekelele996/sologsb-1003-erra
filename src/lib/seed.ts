@@ -48,3 +48,34 @@ export const seedDocument: LocalizationDocument = {
   glossary: seedGlossary,
   discussions: seedDiscussions,
 }
+
+// 上游改版后的英文源文，由 /api/upstream-document 返回。
+// 相对当前工作区：3 段原文变更、2 段新增、1 段移除。
+export const upstreamSource = {
+  version: 'v2.3.0',
+  markdown: [
+    '# Deployment Guide',
+    '',
+    'This guide explains how to deploy {{project_name}} version {{version}} to a Kubernetes cluster using Helm.',
+    '',
+    '## Prerequisites',
+    '',
+    'Make sure Helm 3.10 or newer is installed on your workstation before you continue.',
+    '',
+    'Before you begin, review the [configuration reference](https://docs.example.com/config) and install `kubectl`.',
+    '',
+    'The operator requires cluster-admin privileges during installation. Production environments must use a dedicated service account with minimal RBAC scope.',
+    '',
+    '```bash',
+    'helm upgrade --install {{release_name}} oci://registry.example.com/operator --version {{version}}',
+    '```',
+    '',
+    'If the controller cannot reach the API server, check the network policy and then restart the pod.',
+    '',
+    'See [Troubleshooting](https://docs.example.com/troubleshooting#connectivity) for detailed diagnostics and log collection.',
+    '',
+    '## Upgrade Notes',
+    '',
+    'For rollback instructions, refer to the [rollback runbook](https://docs.example.com/rollback).',
+  ].join('\n'),
+}
